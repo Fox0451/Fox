@@ -30,7 +30,7 @@
 	 function callMethodWallPost() // вызываем метод ВК
          {
             vkBridge.send('VKWebAppShowWallPostBox', {
-              message: 'Первая запись на стене!'
+              message: 'Тестовая запись!'
               })
               .then((data) => {
                 if (data.post_id) {
