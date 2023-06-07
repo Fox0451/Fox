@@ -59,7 +59,7 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  unityGame.SendMessage(ConnectJs, ResponseOk);
+				  unityGame.SendMessage("ConnectJs", "ResponseOk");
                 }
               })
               .catch((error) => {
