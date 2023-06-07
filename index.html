@@ -14,8 +14,25 @@
 	
 	function FromUnityToJs ()
 	{
-		alert ("Very good!");
+		callMethodWallPost();
 	}
+	 function callMethodWallPost() // вызываем метод ВК
+         {
+            vkBridge.send('VKWebAppShowWallPostBox', {
+              message: 'Первая запись на стене!'
+              })
+              .then((data) => {
+                if (data.post_id) {
+                  // Запись размещена
+                  console.log ("ok");
+                }
+              })
+              .catch((error) => {
+                // Ошибка
+                console.log(error);
+              });
+
+         }
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
 	
 	jQuery(document).ready(function($)
