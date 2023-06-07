@@ -13,10 +13,23 @@
 	<script>
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
 	  var myGameInstance = null;
-  script.onload = () => {
-    createUnityInstance(canvas, config, (progress) => {...}).then((unityInstance) => {
-      myGameInstance = unityInstance;
-	  })}
+
+    var script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = () => {
+      createUnityInstance(canvas, config, (progress) => {
+        progressBarFull.style.width = 100 * progress + "%";
+      }).then((unityInstance) => {
+
+        myGameInstance = unityInstance;
+        loadingBar.style.display = "none";
+        //fullscreenButton.onclick = () => {
+        //    unityInstance.SetFullscreen(1);
+        //};
+      }).catch((message) => {
+        alert(message);
+      });
+    };
 	/*
 	bridge.send('VKWebAppInit')
 	.then((data) =>
