@@ -12,6 +12,10 @@
     <script src="Build/UnityLoader.js"></script>
 	<script>
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
+	  var myGameInstance = null;
+  script.onload = () => {
+    createUnityInstance(canvas, config, (progress) => {...}).then((unityInstance) => {
+      myGameInstance = unityInstance;
 	/*
 	bridge.send('VKWebAppInit')
 	.then((data) =>
