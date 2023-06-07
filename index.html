@@ -11,18 +11,23 @@
 	<script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
 	<script>
+	/*
 	bridge.send('VKWebAppInit')
-  .then((data) => { 
-    if (data.result) {
-      // Приложение инициализировано
-    } else {
-      // Ошибка
-    }
-  })
-  .catch((error) => {
-    // Ошибка
-    console.log(error);
-  });
+	.then((data) =>
+	{ 
+		if (data.result) {
+			// Приложение инициализировано
+		} 
+			else
+		{
+		// Ошибка
+		}
+	})
+		.catch((error) => {
+		// Ошибка
+		console.log(error);
+	});
+	*/
 	function FromUnityToJs ()
 	{
 		callMethodWallPost();
