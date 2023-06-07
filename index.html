@@ -11,6 +11,7 @@
 	<script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
 	<script>
+	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
 	/*
 	bridge.send('VKWebAppInit')
 	.then((data) =>
@@ -51,7 +52,6 @@
               });
 
          }
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
 	
 	jQuery(document).ready(function($)
 	{
