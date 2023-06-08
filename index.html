@@ -7,10 +7,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 	<script>
-  // Отправляет событие инициализации нативному клиенту
-  vkBridge.send('VKWebAppInit');
-</script>
-	<script>
+	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
+	jQuery(document).ready(function($)
+		{
+			vkBridge.send('VKWebAppInit');
+		});
 	function FromUnityToJs ()
 		{
 			callMethodWallPost();
@@ -34,11 +35,6 @@
               });
 
         }
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
-	jQuery(document).ready(function($)
-		{
-			vkBridge.send('VKWebAppInit');
-		});
 	</script>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
