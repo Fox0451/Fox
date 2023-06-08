@@ -7,19 +7,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 	<script>
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
-	jQuery(document).ready(function($)
-		{
-			vkBridge.send('VKWebAppInit');
-		});
 	function FromUnityToJs ()
 		{
-			callMethodWallPost();
+			unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+			//callMethodWallPost();
 		}
 	function callMethodWallPost() // вызываем метод ВК
         {
-			unityInstance.SendMessage('ConnectJs', 'ResponseOk');
-            /*vkBridge.send('VKWebAppShowWallPostBox', {
+            vkBridge.send('VKWebAppShowWallPostBox', {
               message: 'Первая запись на стене!'
               })
               .then((data) => {
@@ -34,8 +29,13 @@
 					console.log(error);
 					unityInstance.SendMessage('ConnectJs', 'ResponseError');
               });
-*/
+
         }
+		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
+	jQuery(document).ready(function($)
+		{
+			vkBridge.send('VKWebAppInit');
+		});
 	</script>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
