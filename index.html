@@ -24,11 +24,13 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
+				  unityInstance.SendMessage('ConnectJs', 'ResponseOk');
                 }
               })
-              .catch((error) => {
-                // Ошибка
-                console.log(error);
+				.catch((error) => {
+					// Ошибка
+					console.log(error);
+					unityInstance.SendMessage('ConnectJs', 'ResponseError');
               });
 
         }
