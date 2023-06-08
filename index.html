@@ -18,7 +18,8 @@
 		}
 	function callMethodWallPost() // вызываем метод ВК
         {
-            vkBridge.send('VKWebAppShowWallPostBox', {
+			unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+            /*vkBridge.send('VKWebAppShowWallPostBox', {
               message: 'Первая запись на стене!'
               })
               .then((data) => {
@@ -33,7 +34,7 @@
 					console.log(error);
 					unityInstance.SendMessage('ConnectJs', 'ResponseError');
               });
-
+*/
         }
 	</script>
   </head>
