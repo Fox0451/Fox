@@ -29,6 +29,7 @@
            alert(message);
          });
        };
+		createUnityInstance(canvas, config, onProgress).then(onSuccess).catch(onError);
 	/*
 	bridge.send('VKWebAppInit')
 	.then((data) =>
@@ -59,13 +60,13 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  unityGame.SendMessage("ConnectJs", "ResponseOk");
+				  MyGameInstance.SendMessage("ConnectJs", "ResponseOk");
                 }
               })
               .catch((error) => {
                 // Ошибка
                 console.log ("error");
-				unityGame.SendMessage('ConnectJs', 'ResponseError');
+				MyGameInstance.SendMessage('ConnectJs', 'ResponseError');
               });
 
          }
