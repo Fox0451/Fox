@@ -18,7 +18,8 @@
 		
 	function FromUnityToJs ()
 		{
-			callMethodWallPost();
+		unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+			//callMethodWallPost();
 		}
 	function callMethodWallPost() // вызываем метод ВК
         {
