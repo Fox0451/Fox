@@ -7,13 +7,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 	<script>
-var u = new UnityObject2();
-u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
+	//var u = new UnityObject2();
+	//u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
 
-//function SaySomethingToUnity()
-//{
-//    u.getUnity().SendMessage("MyObject", "MyFunction", "Hello from a web page!");
-//}
+	//function SaySomethingToUnity()
+	//	{
+	//		u.getUnity().SendMessage("MyObject", "MyFunction", "Hello from a web page!");
+	//	}
 		
 	function FromUnityToJs ()
 		{
@@ -28,17 +28,17 @@ u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  u.getUnity().SendMessage('ConnectJs', 'ResponseOk');
+				  unityInstance.SendMessage('ConnectJs', 'ResponseOk');
                 }
               })
 				.catch((error) => {
 					// Ошибка
 					console.log(error);
-					u.getUnity().SendMessage("ConnectJs", "ResponseError", "");
+					unityInstance.SendMessage("ConnectJs", "ResponseError", "");
               });
 
         }
-		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
+		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Fox0451.github.io_build.json", {onProgress: UnityProgress});
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
