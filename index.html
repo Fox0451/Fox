@@ -6,8 +6,9 @@
     <title>Unity WebGL Player | Test</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	<script src="Build/Fox0451.github.io.loader.js"></script>
 	<script>
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Fox0451_build.json", {onProgress: UnityProgress});
+	
 	//var u = new UnityObject2();
 	//u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
 
@@ -40,6 +41,7 @@
               });
 
         }
+		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Fox0451_build.json", {onProgress: UnityProgress});
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
