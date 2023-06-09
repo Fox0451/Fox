@@ -7,11 +7,18 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 	<script>
+var u = new UnityObject2();
+u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
+
+//function SaySomethingToUnity()
+//{
+//    u.getUnity().SendMessage("MyObject", "MyFunction", "Hello from a web page!");
+//}
+		
 	function FromUnityToJs ()
 		{
-			myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
-			//callMethodWallPost();
-	/*	}
+			callMethodWallPost();
+		}
 	function callMethodWallPost() // вызываем метод ВК
         {
             vkBridge.send('VKWebAppShowWallPostBox', {
@@ -21,16 +28,16 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+				  u.getUnity().SendMessage('ConnectJs', 'ResponseOk');
                 }
               })
 				.catch((error) => {
 					// Ошибка
 					console.log(error);
-					unityInstance.SendMessage('ConnectJs', 'ResponseError');
+					u.getUnity().SendMessage("ConnectJs", "ResponseError", "");
               });
 
-        */}
+        }
 		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
 	jQuery(document).ready(function($)
 		{
