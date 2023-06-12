@@ -41,7 +41,7 @@
               });
 
         }
-		var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
+		var unityInstance = UnityLoader.createUnityInstance("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
