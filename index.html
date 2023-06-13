@@ -3,55 +3,71 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | LessonVK</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
-    <script src="Build/UnityLoader.js"></script>
-    <script>
+    <title>Unity WebGL Player | Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	<script src="Build/Fox0451.github.io.loader.js"></script>
+	<script>
+	function FromUnityToJs ()
+		{
+			callMethodWallPost();
+		}
+	function callMethodWallPost() // вызываем метод ВК
+        {
+            vkBridge.send('VKWebAppShowWallPostBox', {
+              message: 'Первая запись на стене!'
+              })
+              .then((data) => {
+                if (data.post_id) {
+                  // Запись размещена
+                  console.log ("ok");
+				  unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+                }
+              })
+				.catch((error) => {
+					// Ошибка
+					console.log(error);
+					unityInstance.SendMessage("ConnectJs", "ResponseError", "");
+              });
 
-      function FromUnityToJs ()   // функция вызывается из Unity
-      {
-         callMethodWallPost();
-      }
-
-      function callMethodWallPost() // вызываем метод ВК
-      {
-        vkBridge.send('VKWebAppShowWallPostBox', {
-          message: 'Первая запись на стене!'
-          })
-          .then((data) => {
-            if (data.post_id) {
-             // console.log ("ok"); // Запись размещена
-              unityInstance.SendMessage('ConnectJs', 'ResponseOk');
-            }
-          })
-          .catch((error) => {
-            console.log(error); // Ошибка
-            unityInstance.SendMessage('ConnectJs', 'ResponseError');
-          });
-
-      }
-
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress}); // запуск unity на странице
-
-      jQuery(document).ready(function($) // страница прогружена
-      {
-            vkBridge.send('VKWebAppInit'); // Инициализация ВК
-      });
-
-    </script>
+        }
+		var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Test_build.json", {onProgress: UnityProgress});
+	jQuery(document).ready(function($)
+		{
+			vkBridge.send('VKWebAppInit');
+		});
+	</script>
   </head>
-  <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">LessonVK</div>
-      </div>
-    </div>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 960px; height: 600px; background: #231F20"></canvas>
+    <script src="Build/Fox0451.github.io.loader.js"></script>
+    <script>
+	    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/Fox0451.github.io.data",
+        frameworkUrl: "Build/Fox0451.github.io.framework.js",
+        codeUrl: "Build/Fox0451.github.io.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Test",
+        productVersion: "0.1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
   </body>
 </html>
