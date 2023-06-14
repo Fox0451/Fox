@@ -23,17 +23,22 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+				  window.unityInstance.SendMessage('ConnectJs', 'ResponseOk');
                 }
               })
 				.catch((error) => {
 					// Ошибка
 					console.log(error);
-					unityInstance.SendMessage('ConnectJs', 'ResponseError');
+					window.unityInstance.SendMessage('ConnectJs', 'ResponseError');
               });
 
         }
-		var buildUrl = "Build";
+		var createUnityInstance(canvas, config, (progress) => {
+  progressBarFull.style.width = 100 * progress + "%";
+}).then((unityInstance) => {
+ 
+  window.unityInstance = unityInstance; // <-- this
+		//var buildUrl = "Build";
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
