@@ -23,13 +23,13 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  window.unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+				  unityInstance.SendMessage('ConnectJs', 'ResponseOk');
                 }
               })
 				.catch((error) => {
 					// Ошибка
 					console.log(error);
-					window.unityInstance.SendMessage('ConnectJs', 'ResponseError');
+					unityInstance.SendMessage('ConnectJs', 'ResponseError');
               });
 
         }
@@ -38,7 +38,23 @@
 }).then((unityInstance) => {
  
   window.unityInstance = unityInstance; // <-- this
-		*/var buildUrl = "Build";
+		*/
+		var buildUrl = "Build";
+var config = {
+  dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+  frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+  codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+  memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+  symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+  streamingAssetsUrl: "StreamingAssets",
+  companyName: "{{{ COMPANY_NAME }}}",
+  productName: "{{{ PRODUCT_NAME }}}",
+  productVersion: "{{{ PRODUCT_VERSION }}}",
+};
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
