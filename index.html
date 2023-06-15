@@ -33,7 +33,8 @@
               });
 
         }
-		var unityInstance = loader.createUnityInstance(canvas, config, onProgress).then(onSuccess).catch(onError);
+		var unityInstance = Loader.createUnityInstance(canvas, config, onProgress).then(onSuccess).catch(onError);
+		//var unityInstance = Loader.instantiate("unityContainer", "Build/Lesson_build.json", {onProgress: UnityProgress});
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
