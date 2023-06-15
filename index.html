@@ -22,20 +22,16 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  unityInstance.SendMessage('ConnectJs', 'ResponseOk');
+				  myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
                 }
               })
 				.catch((error) => {
 					// Ошибка
 					console.log(error);
-					unityInstance.SendMessage('ConnectJs', 'ResponseError');
+					myGameInstance.SendMessage('ConnectJs', 'ResponseError');
               });
 
         }
-		 var myGameInstance = null;
-  script.onload = () => {
-    createUnityInstance(canvas, config, (progress) => {...}).then((unityInstance) => {
-      myGameInstance = unityInstance;})}
 		//var unityInstance = UnityLoader.instantiate();
 		//var unityInstance = Loader.createUnityInstance(canvas, config, onProgress).then(onSuccess).catch(onError);
 		//var unityInstance = Loader.instantiate("unityContainer", "Build/Fox0451.github.io.framework.js", {onProgress: UnityProgress});
@@ -147,6 +143,7 @@
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
+				  myGameInstance = unityInstance;
                 };
               }).catch((message) => {
                 alert(message);
