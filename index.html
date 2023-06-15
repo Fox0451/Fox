@@ -22,13 +22,13 @@
                 if (data.post_id) {
                   // Запись размещена
                   console.log ("ok");
-				  MyGameInstance.SendMessage('ConnectJs', 'ResponseOk');
+				  myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
                 }
               })
 				.catch((error) => {
 					// Ошибка
 					console.log(error);
-					MyGameInstance.SendMessage('ConnectJs', 'ResponseError');
+					myGameInstance.SendMessage('ConnectJs', 'ResponseError');
               });
 
         }
