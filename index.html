@@ -33,10 +33,6 @@
               });
 
         }
-		 var myGameInstance = null;
-  script.onload = () => {
-    createUnityInstance(canvas, config, (progress) => {...}).then((unityInstance) => {
-      myGameInstance = unityInstance;})}
 		//var unityInstance = UnityLoader.instantiate();
 		//var unityInstance = Loader.createUnityInstance(canvas, config, onProgress).then(onSuccess).catch(onError);
 		//var unityInstance = Loader.instantiate("unityContainer", "Build/Fox0451.github.io.framework.js", {onProgress: UnityProgress});
@@ -156,6 +152,10 @@
 
       document.body.appendChild(script);
 
+		 var myGameInstance = null;
+  script.onload = () => {
+    createUnityInstance(canvas, config, (progress) => {...}).then((unityInstance) => {
+      myGameInstance = unityInstance;})}
     </script>
   </body>
 </html>
