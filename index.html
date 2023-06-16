@@ -10,7 +10,10 @@
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 	<script src="https://oauth.vk.com/authorize?client_id=1&display=page&redirect_uri=http://example.com/callback&scope=friends&response_type=token&v=5.131&state=123456"></script>
 	<script>
-	allert user_id;
+	function Info()
+	{
+	POST https://api.vk.com/method/users.get?user_ids=743784474&fields=bdate&access_token=533bacf01e11f55b536a565b57531ac114461ae8736d6506a3&v=5.131 HTTP/1.1
+	}
 		function FromUnityToJs ()
 		{
 			callMethodWallPost();
@@ -31,6 +34,7 @@
 					// Ошибка
 					console.log(error);
 					myGameInstance.SendMessage('ConnectJs', 'ResponseError');
+					alert Info();
               });
 
         }
