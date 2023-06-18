@@ -36,7 +36,6 @@
 			  
       function auth(){
         vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
-		  alert user_id;
           myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
         });
       }
