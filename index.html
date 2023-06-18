@@ -16,7 +16,7 @@
 		}
 	function callMethodWallPost() // вызываем метод ВК
         {
-            bridge.send('VKWebAppShowWallPostBox', {
+            vkBridge.send('VKWebAppShowWallPostBox', {
               message: 'Первая запись на стене!'
               })
               .then((data) => {
@@ -36,7 +36,8 @@
         }
 	jQuery(document).ready(function($)
 		{
-			bridge.send('VKWebAppInit');
+			//vkBridge.send('VKWebAppInit');
+			bridge.send('VKWebAppInit', {});
 		});
 	</script>
   </head>
