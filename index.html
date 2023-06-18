@@ -14,7 +14,7 @@
 		{
 			callMethodWallPost();
 		}
-	function callMethodWallPost() // вызываем метод ВК
+	/*function callMethodWallPost() // вызываем метод ВК
         {
             vkBridge.send('VKWebAppShowWallPostBox', {
               message: 'Первая запись на стене!'
@@ -32,7 +32,21 @@
 					myGameInstance.SendMessage('ConnectJs', 'ResponseError');
               });
 
-        }
+        }*/
+		function callMethodWallPost()
+		vkBridge.send('VKWebAppGetUserInfo', {
+		user_id:
+		})
+		.then((data) => { 
+			if (data.id) {
+			alert user_id;
+		// Данные пользователя получены
+		}
+		})
+			.catch((error) => {
+		// Ошибка
+		console.log(error);
+		});
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
