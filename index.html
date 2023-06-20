@@ -40,8 +40,8 @@
 	  function auth(){
 	  vkBridge.send('VKWebAppGetUserInfo')
 			.then((data) => { 
-			myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
 		if (data.id) {
+		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
 		// Данные пользователя получены
 			}
 			})
