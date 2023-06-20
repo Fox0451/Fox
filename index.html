@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="TemplateData/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-	<script src="https://oauth.vk.com/authorize?client_id=51666113&display=page&redirect_uri=http://example.com/callback&scope=friends&response_type=token&v=5.131&state=123456"></script>
+	<script src="https://oauth.vk.com/authorize?client_id=51666113&display=page&redirect_uri=http://example.com/callback&scope,photos,wall,ads,offline,notify=friends&response_type=token&v=5.131&state=123456"></script>
 	<script>
 		function FromUnityToJs ()
 		{
 			callMethodWallPost();
+			auth();
 		}
 	function callMethodWallPost() // вызываем метод ВК
         {
@@ -31,7 +32,7 @@
 					console.log(error);
 					myGameInstance.SendMessage('ConnectJs', 'ResponseError');
               });
-			  
+		}	  
       //function auth(){
        // vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
        //   myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
@@ -50,8 +51,8 @@
 			console.log(error);
 		});
 	  }
-
-      /*function getUserData(){
+/*
+      function getUserData(){
         vkBridge.send("VKWebAppStorageGet",{"keys":["_save"]}).then(data =>{
         console.log(data);
         myGameInstance.SendMessage('VKSDK', 'DataGetting', JSON.stringify(data));
@@ -74,7 +75,7 @@
           myGameInstance.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
       }
 
-        }*/
+     */   
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
