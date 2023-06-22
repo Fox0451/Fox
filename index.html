@@ -14,9 +14,11 @@
 		function FromUnityToJs ()
 		{
 			callMethodWallPost();
+			auth();
 		}
 		function auth(){
-	  vkBridge.send('VKWebAppGetUserInfo')
+		vkBridge.send('VKWebAppGetUserInfo'{user_id:
+		})
 			.then((data) => { 
 		if (data.id) {
 		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
