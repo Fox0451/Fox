@@ -14,9 +14,8 @@
 		function FromUnityToJs ()
 		{
 			callMethodWallPost();
-			auth();
 		}
-		function auth(){
+		
 		vkBridge.send('VKWebAppGetUserInfo'{user_id:
 		})
 			.then((data) => { 
@@ -29,7 +28,7 @@
 			// Ошибка
 			console.log(error);
 		});
-	  }
+	  
 	function callMethodWallPost() // вызываем метод ВК
         {
             vkBridge.send('VKWebAppShowWallPostBox', {
