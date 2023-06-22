@@ -37,19 +37,7 @@
        //   myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
       //  });
      // }
-	  function auth(){
-	  vkBridge.send('VKWebAppGetUserInfo')
-			.then((data) => { 
-		if (data.id) {
-		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
-		// Данные пользователя получены
-			}
-			})
-			.catch((error) => {
-			// Ошибка
-			console.log(error);
-		});
-	  }
+	  
 /*
       function getUserData(){
         vkBridge.send("VKWebAppStorageGet",{"keys":["_save"]}).then(data =>{
@@ -78,6 +66,19 @@
 	jQuery(document).ready(function($)
 		{
 			vkBridge.send('VKWebAppInit');
+			function auth(){
+	  vkBridge.send('VKWebAppGetUserInfo')
+			.then((data) => { 
+		if (data.id) {
+		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
+		// Данные пользователя получены
+			}
+			})
+			.catch((error) => {
+			// Ошибка
+			console.log(error);
+		});
+	  }
 		});
 	</script>
   </head>
