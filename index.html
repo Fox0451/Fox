@@ -8,12 +8,26 @@
     <link rel="stylesheet" href="TemplateData/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	<script>vkBridge.send("VKWebAppInit", {});</script>
 	<script>
+
 		function FromUnityToJs ()
 		{
 			callMethodWallPost();
-			auth();
 		}
+		function auth(){
+	  vkBridge.send('VKWebAppGetUserInfo')
+			.then((data) => { 
+		if (data.id) {
+		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
+		// Данные пользователя получены
+			}
+			})
+			.catch((error) => {
+			// Ошибка
+			console.log(error);
+		});
+	  }
 	function callMethodWallPost() // вызываем метод ВК
         {
             vkBridge.send('VKWebAppShowWallPostBox', {
@@ -65,20 +79,8 @@
      */   
 	jQuery(document).ready(function($)
 		{
-			vkBridge.send('VKWebAppInit');
-			function auth(){
-	  vkBridge.send('VKWebAppGetUserInfo')
-			.then((data) => { 
-		if (data.id) {
-		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
-		// Данные пользователя получены
-			}
-			})
-			.catch((error) => {
-			// Ошибка
-			console.log(error);
-		});
-	  }
+			//vkBridge.send('VKWebAppInit');
+			
 		});
 	</script>
   </head>
