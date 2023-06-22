@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="TemplateData/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-	<script>vkBridge.send("VKWebAppInit", {});</script>
-	<script>vkBridge.send('VKWebAppGetUserInfo'{user_id:492093542
-		})
+	<script>vkBridge.send('VKWebAppInit', {});</script>
+	<script>vkBridge.send(users.get, user_id)
 			.then((data) => { 
 		if (data.id) {
 		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
