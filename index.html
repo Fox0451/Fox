@@ -6,6 +6,37 @@
     <title>Unity WebGL Player | Test</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	 <script>   // Пользовательский код
+
+        function FromUnityToJs ()   // функция вызывается из Unity
+        {
+        callMethodWallPost();
+        }
+
+        function callMethodWallPost() // вызываем метод ВК
+        {
+        vkBridge.send('VKWebAppShowWallPostBox', {
+          message: 'Первая запись на стене!'
+          })
+          .then((data) => {
+            if (data.post_id) {
+              console.log ("ok"); // Запись размещена
+              myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
+            }
+          })
+          .catch((error) => {
+            console.log(error); // Ошибка
+            myGameInstance.SendMessage('ConnectJs', 'ResponseError');
+          });
+
+        }
+
+        jQuery(document).ready(function($) // страница прогружена
+        {
+            vkBridge.send('VKWebAppInit'); // Инициализация ВК
+        });
+
+    </script>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 960px; height: 600px; background: #231F20"></canvas>
@@ -55,37 +86,6 @@ var script = document.createElement("script");
             };
 
       document.body.appendChild(script);
-
-    </script>
-	 <script>   // Пользовательский код
-
-        function FromUnityToJs ()   // функция вызывается из Unity
-        {
-        callMethodWallPost();
-        }
-
-        function callMethodWallPost() // вызываем метод ВК
-        {
-        vkBridge.send('VKWebAppShowWallPostBox', {
-          message: 'Первая запись на стене!'
-          })
-          .then((data) => {
-            if (data.post_id) {
-              console.log ("ok"); // Запись размещена
-              myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
-            }
-          })
-          .catch((error) => {
-            console.log(error); // Ошибка
-            myGameInstance.SendMessage('ConnectJs', 'ResponseError');
-          });
-
-        }
-
-        jQuery(document).ready(function($) // страница прогружена
-        {
-            vkBridge.send('VKWebAppInit'); // Инициализация ВК
-        });
 
     </script>
   </body>
