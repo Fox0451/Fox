@@ -9,22 +9,18 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 	<script>vkBridge.send('VKWebAppInit', {});</script>
-	<script>vkBridge.send(users.get)
+	<script>vkBridge.send('users.get', {user_id:})
 			.then((data) => { 
-			console.log (user_id);
-		if (data.id) {
+		if (data.user_id) {
 		myGameInstance.SendMessage('VKSDK', 'AuthenticateSuccess');
 		 //Данные пользователя получены
+			console.log (id + " Номер");
 			}
 			})
 			.catch((error) => {
 			// Ошибка
 			console.log(error);
 		});</script>
-	<script>
-		var user = user.get(user_id);
-	console.log ("Проверка" + user);
-	</script>
 	<script>
 
 		function FromUnityToJs ()
